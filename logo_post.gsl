@@ -1,0 +1,5 @@
+.template 1
+.
+$(indent(2))<a href="$(projectnode.link:)"><img src="$(projectnode.url:)" alt="$(project.name:) logo"/></a>
+.
+.endtemplate

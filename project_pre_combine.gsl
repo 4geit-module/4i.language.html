@@ -1,0 +1,47 @@
+.template 0
+
+new projectnode.meta as m
+  define m.name = 'keywords'
+  define m.content = ''
+  for project.keyword as k
+    m.content += '$(k.value:)'
+    if !last()
+      m.content += ', '
+    endif
+  endfor
+endnew
+
+new projectnode.meta as m
+  define m.name = 'robots'
+  define m.content = 'index, follow'
+endnew
+
+new projectnode.meta as m
+  define m.name = 'description'
+  define m.content = project.description
+endnew
+
+new projectnode.meta as m
+  define m.name = 'author'
+  define m.content = ''
+  for project.author as a
+    m.content += '$(a.name:)'
+    if !last()
+      m.content += ', '
+    endif
+  endfor
+endnew
+
+new projectnode.meta as m
+  define m.name = 'version'
+  define m.content = project.branch
+endnew
+
+if defined(project.license)
+  new projectnode.meta as m
+    define m.name = 'copyright'
+    define m.content = project.license
+  endnew
+endif
+
+.endtemplate

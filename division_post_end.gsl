@@ -1,0 +1,9 @@
+.template 1
+.
+$(indent(2))</div>\
+.if defined(projectnode.name)
+ <!-- !$(projectnode.name) -->\
+.endif
+
+.
+.endtemplate

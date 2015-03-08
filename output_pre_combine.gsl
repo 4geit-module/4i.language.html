@@ -1,0 +1,11 @@
+.template 0
+
+stylefn = '$(global.project_path:)/styles/common__css.gsl'
+
+if file.exists(stylefn)
+. template 1
+  gsl from stylefn
+. endtemplate
+endif
+
+.endtemplate

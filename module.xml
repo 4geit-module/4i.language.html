@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<module name="4i.language.html" branch="master">
+  <module name="4i.language" required_branch="master"/>
+  <node name="project" pre_combine="project_pre_combine.gsl">
+    <attribute name="title" required="True"/>
+    <attribute name="language" required="True"/>
+    <attribute name="description" required="True"/>
+    <node name="style" number="*" dst="#(path)#(name).css" pre_check="style_pre_check.gsl" post="style_post.gsl">
+      <attribute name="name" required="True"/>
+      <attribute name="path" required="True"/>
+    </node>
+    <node name="meta" number="*">
+      <attribute name="name" required="True"/>
+      <attribute name="content" required="True"/>
+    </node>
+    <node name="output" number="*" dst="#(path)#(name).html" pre_combine="output_pre_combine.gsl" pre="output_pre.gsl" post="output_post.gsl" post_end="output_post_end.gsl" debug="True">
+      <attribute name="name" required="True"/>
+      <attribute name="path" required="True"/>
+      <node name="logo" pre="logo_pre.gsl" post="logo_post.gsl">
+	<attribute name="url" required="True"/>
+      </node>
+      <node name="menu" number="*" pre="menu_pre.gsl" post="menu_post.gsl" post_end="menu_post_end.gsl">
+	<attribute name="name"/>
+	<attribute name="url"/>
+	<node name="item" number="*" pre="item_pre.gsl" post="item_post.gsl" post_end="item_post_end.gsl">
+	  <attribute name="name" required="True"/>
+	</node>
+      </node>
+      <node name="division" number="*" pre_combine="division_pre_combine.gsl" pre="division_pre.gsl" post="division_post.gsl" post_end="division_post_end.gsl">
+	<attribute name="name" required="True"/>
+	<attribute name="class"/>
+	<node ref=":logo"/>
+	<node ref=":menu"/>
+	<node ref=":division"/>
+      </node>
+    </node>
+    <node name="dir" number="*" debug="True">
+      <attribute name="name" required="True"/>
+      <attribute name="path" required="True"/>
+      <node ref=":style"/>
+      <node ref=":output"/>
+      <node ref=":dir"/>
+    </node> <!-- !dir -->
+  </node>
+</module>

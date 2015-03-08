@@ -1,0 +1,29 @@
+.template 0
+
+stylefn = 'styles/$(projectnode.name)__css.gsl'
+
+if file.exists(global.project_path + stylefn)
+. template 1
+. cached = cache__open(stylefn)
+. gsl from global.project_path + stylefn
+. cache__close(cached)
+. endtemplate
+endif
+
+.endtemplate
+.
+.template 1
+.
+$(indent(2))<div\
+.
+.if defined(projectnode.name)
+ id="$(projectnode.name:)"\
+.endif
+.
+.if defined(projectnode.class)
+ class="$(projectnode.class:)"\
+.endif
+.
+>
+.
+.endtemplate

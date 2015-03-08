@@ -1,0 +1,15 @@
+.template 1
+.
+$(indent(2))<li>
+.
+.if defined(projectnode.url)
+$(indent(2))  <a href="$(projectnode.url:)">
+.endif
+.
+$(indent(2))    <span>$(projectnode.name)</span>
+.
+.if defined(projectnode.url)
+$(indent(2))  </a>
+.endif
+.
+.endtemplate
