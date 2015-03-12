@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<module name="4i.language.html" branch="master">
+<module name="4i.language.html" branch="master" description="Primitive 4i module to generate HTML">
   <module name="4i.language" required_branch="master"/>
   <node name="project" pre_combine="project_pre_combine.gsl">
     <attribute name="title" required="True"/>
